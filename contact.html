@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="stlye.css"> 
+</head>
+
+<script>
+    // home button
+    document.addEventListener('DOMContentLoaded', function() {
+        //create link for the pseudo-element
+        const homeButton = document.createElement('a');
+        homeButton.href = 'index.html';
+        homeButton.style.position = 'fixed';
+        homeButton.style.top = '20px';
+        homeButton.style.left = '20px';
+        homeButton.style.backgroundColor = '#4CAF50';
+        homeButton.style.color = 'white';
+        homeButton.style.padding = '10px 20px';
+        homeButton.style.borderRadius = '5px';
+        homeButton.style.textDecoration = 'none';
+        homeButton.style.fontWeight = 'bold';
+        homeButton.style.zIndex = '1000';
+        homeButton.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+        homeButton.style.transition = 'all 0.3s ease';
+        homeButton.textContent = 'HOME';
+        
+        //hover effects
+        homeButton.addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#45a049';
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+        });
+        
+        homeButton.addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#4CAF50';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+        });
+        
+        //adds to document
+        document.body.appendChild(homeButton);
+    });
+</script>
+
+<body>
+    <div class="box login-container">
+        <form action="" class="contact-form">
+            <h3>Send us a message!</h3>
+            <hr>
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
+            </div>
+            <div class="input-box">
+                <textarea name="message" placeholder="Your Message" class="contact-inputs textarea" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
