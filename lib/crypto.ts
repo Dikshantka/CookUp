@@ -1,13 +1,4 @@
-/**
- * Cryptographic Utilities
- * 
- * Provides AES-256-GCM encryption/decryption functions for securing sensitive data.
- * Uses a 32-byte encryption key from environment variables.
- * 
- * This module is ready for use but not currently implemented in the notes feature.
- * Can be integrated to encrypt note content before storing in MongoDB.
- */
-
+// lib/crypto.ts
 import crypto from "crypto";
 
 /**
