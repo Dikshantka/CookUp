@@ -1,16 +1,25 @@
-// This file now only contains the server-side logic and imports NotesClient from its own file.
+/**
+ * Notes Page - Server Component
+ * 
+ * Protected page that requires authentication to access.
+ * Performs server-side session validation before rendering the client component.
+ */
 
-// app/notes/page.tsx
-import { auth0 } from "@/lib/auth0";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import NotesClient from "./NotesClient";
 
 export default async function NotesPage() {
-  // Server-side session check
-  const session = await auth0.getSession();
-  if (!session) {
-    // Send the user to Auth0 login and return to /notes afterwards
-    redirect("/auth/login?returnTo=/notes");
+  // Server-side authentication check using session cookie
+  const cookieStore = await cookies();
+  const userCookie = cookieStore.get('auth-user');
+  
+  // Redirect to login if no valid session found
+  if (!userCookie) {
+    // Include returnTo parameter to redirect back after login
+    redirect("/api/auth/login?returnTo=/notes");
   }
+  
+  // Render the client-side notes interface for authenticated users
   return <NotesClient />;
 }

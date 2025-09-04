@@ -1,42 +1,90 @@
-// lib/crypto.ts
+/**
+ * Cryptographic Utilities
+ * 
+ * Provides AES-256-GCM encryption/decryption functions for securing sensitive data.
+ * Uses a 32-byte encryption key from environment variables.
+ * 
+ * This module is ready for use but not currently implemented in the notes feature.
+ * Can be integrated to encrypt note content before storing in MongoDB.
+ */
+
 import crypto from "crypto";
 
-function getKey(): Buffer {
-  const raw = process.env.NOTE_ENCRYPTION_KEY;
-  if (!raw) throw new Error("Missing NOTE_ENCRYPTION_KEY");
-  // Support base64 or hex
-  if (/^[A-Za-z0-9+/=]+$/.test(raw)) {
-    // likely base64
-    const buf = Buffer.from(raw, "base64");
-    if (buf.length !== 32) throw new Error("NOTE_ENCRYPTION_KEY must decode to 32 bytes");
-    return buf;
+/**
+ * Retrieves and validates the encryption key from environment variables
+ * Supports both base64 and hex encoded keys
+ */
+function getEncryptionKey(): Buffer {
+  const rawKey = process.env.NOTE_ENCRYPTION_KEY;
+  
+  if (!rawKey) {
+    throw new Error("Missing NOTE_ENCRYPTION_KEY environment variable");
   }
-  // else assume hex
-  const buf = Buffer.from(raw, "hex");
-  if (buf.length !== 32) throw new Error("NOTE_ENCRYPTION_KEY must be 32 bytes (hex)");
-  return buf;
+  
+  // Detect and decode base64 format
+  if (/^[A-Za-z0-9+/=]+$/.test(rawKey)) {
+    const buffer = Buffer.from(rawKey, "base64");
+    if (buffer.length !== 32) {
+      throw new Error("NOTE_ENCRYPTION_KEY must decode to exactly 32 bytes");
+    }
+    return buffer;
+  }
+  
+  // Decode hex format
+  const buffer = Buffer.from(rawKey, "hex");
+  if (buffer.length !== 32) {
+    throw new Error("NOTE_ENCRYPTION_KEY must be exactly 32 bytes when hex encoded");
+  }
+  return buffer;
 }
 
-export function encryptText(plain: string) {
-  const key = getKey();
-  const iv = crypto.randomBytes(12); // GCM 96-bit IV
+/**
+ * Encrypts plain text using AES-256-GCM encryption
+ * 
+ * @param plainText - The text to encrypt
+ * @returns Object containing encrypted data, IV, and authentication tag
+ */
+export function encryptText(plainText: string) {
+  const key = getEncryptionKey();
+  const iv = crypto.randomBytes(12); // 96-bit IV recommended for GCM
+  
   const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
-  const ct = Buffer.concat([cipher.update(plain, "utf8"), cipher.final()]);
-  const tag = cipher.getAuthTag();
+  const encrypted = Buffer.concat([
+    cipher.update(plainText, "utf8"), 
+    cipher.final()
+  ]);
+  const authTag = cipher.getAuthTag();
+  
   return {
-    ct: ct.toString("base64"),
+    ciphertext: encrypted.toString("base64"),
     iv: iv.toString("base64"),
-    tag: tag.toString("base64"),
+    tag: authTag.toString("base64"),
   };
 }
 
-export function decryptText(enc: { ct: string; iv: string; tag: string }) {
-  const key = getKey();
-  const iv = Buffer.from(enc.iv, "base64");
-  const ct = Buffer.from(enc.ct, "base64");
-  const tag = Buffer.from(enc.tag, "base64");
+/**
+ * Decrypts data that was encrypted with encryptText
+ * 
+ * @param encryptedData - Object containing ciphertext, IV, and auth tag
+ * @returns The original plain text
+ */
+export function decryptText(encryptedData: { 
+  ciphertext: string; 
+  iv: string; 
+  tag: string 
+}) {
+  const key = getEncryptionKey();
+  const iv = Buffer.from(encryptedData.iv, "base64");
+  const ciphertext = Buffer.from(encryptedData.ciphertext, "base64");
+  const authTag = Buffer.from(encryptedData.tag, "base64");
+  
   const decipher = crypto.createDecipheriv("aes-256-gcm", key, iv);
-  decipher.setAuthTag(tag);
-  const pt = Buffer.concat([decipher.update(ct), decipher.final()]);
-  return pt.toString("utf8");
+  decipher.setAuthTag(authTag);
+  
+  const decrypted = Buffer.concat([
+    decipher.update(ciphertext), 
+    decipher.final()
+  ]);
+  
+  return decrypted.toString("utf8");
 }
