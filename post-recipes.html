@@ -1,0 +1,291 @@
+<!--
+====================================================================
+COOK-UP POST RECIPES PAGE - SHARE YOUR CULINARY CREATIONS
+Allow users to share their favorite recipes with the community
+====================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for proper display and SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Share your favorite recipes with the Cook-Up community">
+    
+    <!-- Page title and styles -->
+    <title>Cook-Up - Share Your Recipe</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom styles for post recipes page -->
+    <style>
+        .post-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .post-form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .demo-notice {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #66c909, #4CAF50);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 201, 9, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home button -->
+    <a href="index.html" style="position: fixed; top: 20px; left: 20px; background: #4CAF50; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); transition: all 0.3s ease;">
+        🏠 HOME
+    </a>
+
+    <div class="post-container">
+        <form class="post-form" onsubmit="handleRecipeSubmit(event)">
+            <h1 style="text-align: center; color: #333; margin-bottom: 30px;">
+                <i class="bx bx-food-menu" style="margin-right: 10px;"></i>
+                Share Your Recipe
+            </h1>
+            
+            <div class="demo-notice">
+                <h3 style="margin: 0 0 10px 0; color: #e67e22;">🎯 Demo Mode</h3>
+                <p style="margin: 0; color: #8b4513;">This is a demonstration form. In the full version, recipes will be saved to the database and shared with the community!</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="recipe-title">
+                    <i class="bx bx-food-menu" style="margin-right: 5px;"></i>
+                    Recipe Title *
+                </label>
+                <input type="text" id="recipe-title" name="title" placeholder="e.g., Grandma's Chocolate Chip Cookies" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="recipe-category">
+                    <i class="bx bx-category" style="margin-right: 5px;"></i>
+                    Category *
+                </label>
+                <select id="recipe-category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="appetizers">🥗 Appetizers</option>
+                    <option value="main-course">🍽️ Main Course</option>
+                    <option value="desserts">🍰 Desserts</option>
+                    <option value="beverages">🥤 Beverages</option>
+                    <option value="breakfast">🍳 Breakfast</option>
+                    <option value="lunch">🥪 Lunch</option>
+                    <option value="dinner">🍖 Dinner</option>
+                    <option value="snacks">🍿 Snacks</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="prep-time">
+                        <i class="bx bx-time" style="margin-right: 5px;"></i>
+                        Prep Time (minutes)
+                    </label>
+                    <input type="number" id="prep-time" name="prepTime" placeholder="30" min="1">
+                </div>
+                
+                <div class="form-group" style="flex: 1;">
+                    <label for="cook-time">
+                        <i class="bx bx-timer" style="margin-right: 5px;"></i>
+                        Cook Time (minutes)
+                    </label>
+                    <input type="number" id="cook-time" name="cookTime" placeholder="45" min="1">
+                </div>
+                
+                <div class="form-group" style="flex: 1;">
+                    <label for="servings">
+                        <i class="bx bx-group" style="margin-right: 5px;"></i>
+                        Servings
+                    </label>
+                    <input type="number" id="servings" name="servings" placeholder="4" min="1">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="ingredients">
+                    <i class="bx bx-list-ul" style="margin-right: 5px;"></i>
+                    Ingredients *
+                </label>
+                <textarea id="ingredients" name="ingredients" placeholder="List ingredients (one per line)&#10;2 cups flour&#10;1 cup sugar&#10;3 eggs&#10;1 tsp vanilla extract" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="instructions">
+                    <i class="bx bx-list-ol" style="margin-right: 5px;"></i>
+                    Instructions *
+                </label>
+                <textarea id="instructions" name="instructions" placeholder="Step-by-step instructions&#10;1. Preheat oven to 350°F&#10;2. Mix dry ingredients in a bowl&#10;3. Add wet ingredients and mix until combined&#10;4. Bake for 25-30 minutes" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="notes">
+                    <i class="bx bx-note" style="margin-right: 5px;"></i>
+                    Notes & Tips
+                </label>
+                <textarea id="notes" name="notes" placeholder="Any additional tips, variations, or notes for this recipe"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <i class="bx bx-upload" style="margin-right: 8px;"></i>
+                Share Recipe
+            </button>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="recipes.html" style="color: #666; text-decoration: none; font-size: 14px;">
+                    ← Browse Existing Recipes
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for form handling -->
+    <script>
+        function handleRecipeSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin" style="margin-right: 8px;"></i>Sharing Recipe...';
+            submitBtn.disabled = true;
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                // Show success message
+                showMessage('🎉 Recipe shared successfully! In the full version, this would be saved to the database.', 'success');
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+        
+        function showMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'linear-gradient(135deg, #4CAF50, #45a049)' : 'linear-gradient(135deg, #f44336, #d32f2f)'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-weight: bold;
+                z-index: 10000;
+                max-width: 300px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
+            `;
+            messageDiv.innerHTML = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 4000);
+        }
+        
+        // Add entrance animation
+        window.addEventListener('load', function() {
+            const form = document.querySelector('.post-form');
+            form.style.opacity = '0';
+            form.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                form.style.transition = 'all 0.6s ease';
+                form.style.opacity = '1';
+                form.style.transform = 'translateY(0)';
+            }, 200);
+        });
+        
+        // Add focus effects to form elements
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.2)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
