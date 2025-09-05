@@ -1,17 +1,33 @@
+<!--
+====================================================================
+COOK-UP ACCOUNT PAGE - USER LOGIN & AUTHENTICATION
+Secure login interface with modern design and user experience
+====================================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>  
+    <!-- Meta tags for proper display and SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cook-Up</title>
+    <meta name="description" content="Login to Cook-Up - Access your recipe collection and share with the community">
+    
+    <!-- Page title and styles -->
+    <title>Cook-Up - Login to Your Account</title>
     <link rel="stylesheet" href="stlye.css"> 
+    <!-- Boxicons for beautiful form icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+<!-- JavaScript for enhanced user experience -->
 <script>
-    // home button
+    /**
+     * Creates a dynamic home button with hover effects
+     * Allows users to easily navigate back to homepage
+     */
     document.addEventListener('DOMContentLoaded', function() {
-        //create link for the pseudo-element
+        // Create and style the home button element
         const homeButton = document.createElement('a');
         homeButton.href = 'index.html';
         homeButton.style.position = 'fixed';
@@ -19,52 +35,131 @@
         homeButton.style.left = '20px';
         homeButton.style.backgroundColor = '#4CAF50';
         homeButton.style.color = 'white';
-        homeButton.style.padding = '10px 20px';
-        homeButton.style.borderRadius = '5px';
+        homeButton.style.padding = '12px 24px';
+        homeButton.style.borderRadius = '25px';
         homeButton.style.textDecoration = 'none';
         homeButton.style.fontWeight = 'bold';
+        homeButton.style.fontSize = '14px';
         homeButton.style.zIndex = '1000';
-        homeButton.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+        homeButton.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.3)';
         homeButton.style.transition = 'all 0.3s ease';
-        homeButton.textContent = 'HOME';
+        homeButton.style.textTransform = 'uppercase';
+        homeButton.style.letterSpacing = '1px';
+        homeButton.textContent = '🏠 HOME';
         
-        //hover effects
+        // Add hover effects for better interactivity
         homeButton.addEventListener('mouseover', function() {
             this.style.backgroundColor = '#45a049';
-            this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+            this.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.4)';
         });
         
         homeButton.addEventListener('mouseout', function() {
             this.style.backgroundColor = '#4CAF50';
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.3)';
         });
         
-        //adds to document
+        // Append button to document body
         document.body.appendChild(homeButton);
+        
+        // Add form validation and enhancement
+        const form = document.querySelector('form');
+        const inputs = document.querySelectorAll('input');
+        
+        // Add input focus effects
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.style.borderColor = '#4CAF50';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+                if (this.value === '') {
+                    this.style.borderColor = '#ddd';
+                }
+            });
+        });
     });
 </script>
 
+<!-- MAIN BODY: Login interface -->
 <body>
+    <!-- Login container with modern styling -->
     <div class="box login-container">
-        <form action="login_handler.php" method="POST">
-                <h1>Login</h1>
-                <div class="input-box">
-                    <input type="text" name="username" placeholder="Username" required>
-                    <i class="bx bxs-user"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" name="password" placeholder="Password" required>
-                    <i class="bx bxs-lock-alt"></i>
-                </div>
-                <button type="submit" class="btn">Login</button>
-                
-                <div class="register-link">
-                    <p>Dont have an account? <a
-                        href="register.html">Register</a></p>
-                </div>
+        <!-- LOGIN FORM: Handles user authentication -->
+        <form action="login_handler.php" method="POST" novalidate>
+            <!-- Form header -->
+            <h1>Welcome Back!</h1>
+            <p style="color: #666; margin-bottom: 25px; font-size: 16px;">Sign in to access your recipe collection</p>
+            
+            <!-- USERNAME INPUT: User identification -->
+            <div class="input-box">
+                <input type="text" 
+                       name="username" 
+                       placeholder="Enter your username" 
+                       required 
+                       autocomplete="username"
+                       minlength="3"
+                       maxlength="50">
+                <i class="bx bxs-user"></i>
+            </div>
+            
+            <!-- PASSWORD INPUT: Secure authentication -->
+            <div class="input-box">
+                <input type="password" 
+                       name="password" 
+                       placeholder="Enter your password" 
+                       required 
+                       autocomplete="current-password"
+                       minlength="6">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+            
+            <!-- SUBMIT BUTTON: Login action -->
+            <button type="submit" class="btn">
+                <i class="bx bx-log-in" style="margin-right: 8px;"></i>
+                Sign In
+            </button>
+            
+            <!-- REGISTRATION LINK: New user signup -->
+            <div class="register-link">
+                <p>New to Cook-Up? <a href="register.html">Create an account</a></p>
+                <p><a href="index.html" style="color: #999; font-size: 14px;">← Back to Homepage</a></p>
+            </div>
         </form>
     </div>
+
+    <!-- Additional JavaScript for form enhancements -->
+    <script>
+        // Add loading state to form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const submitBtn = document.querySelector('.btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin" style="margin-right: 8px;"></i>Signing In...';
+            submitBtn.disabled = true;
+            
+            // Re-enable button after 3 seconds if form doesn't submit
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+        
+        // Add entrance animation
+        window.addEventListener('load', function() {
+            const form = document.querySelector('form');
+            form.style.opacity = '0';
+            form.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                form.style.transition = 'all 0.6s ease';
+                form.style.opacity = '1';
+                form.style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
 </body>
 </html>

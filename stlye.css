@@ -1,67 +1,131 @@
-html{
+/* ========================================
+   COOK-UP RECIPE PLATFORM - MAIN STYLES
+   Modern, responsive design for recipe sharing
+   ======================================== */
+
+/* Base HTML setup for full height layout */
+html {
     height: 100%;
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
 
-body{
-    background-color: rgb(61, 61, 61);
-    background-image: url(images/pexels-pixabay-326281.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Global body styles with background image */
+body {
+    background-color: rgb(61, 61, 61); /* Fallback color */
+    background-image: url(images/pexels-pixabay-326281.jpg); /* Main background */
+    background-size: cover; /* Cover entire viewport */
+    background-repeat: no-repeat; /* No image repetition */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Fixed background for parallax effect */
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.6; /* Better readability */
 }
 
-/*Main box*/
+/* ========================================
+   LAYOUT COMPONENTS
+   ======================================== */
+
+/* Main container for centered layout */
 .box {
     margin-left: auto;
     margin-right: auto;
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px; /* Responsive max width */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    backdrop-filter: blur(10px); /* Modern blur effect */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Clean edges */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Elevated appearance */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
+/* Header section with logo */
 header {
     height: 118px;
-     text-align: center;
-}
-
-nav{
-    background-color: rgba(0, 0, 0, 0.267);
     text-align: center;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding: 20px 0;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(102, 201, 9, 0.8));
+    position: relative;
 }
 
-main{
-    height: 400px;
+/* Navigation bar styles */
+nav {
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
     text-align: center;
-    padding-top: 80px;
-    padding-left: 240px;
-    padding-right: 240px;
-}
-/*review box*/
-footer{
-    background-color: greenyellow;
-    height: 100px;
+    padding: 14px 0;
+    backdrop-filter: blur(5px); /* Subtle blur */
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3); /* Green accent border */
 }
 
-h1{
-    font-size: 84px;
-    color: rgb(255, 255, 255);
-    font-family: Arial, Helvetica, sans-serif;
+/* Main content area */
+main {
+    min-height: 400px;
     text-align: center;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-a{
+/* Footer section for future reviews/content */
+footer {
+    background: linear-gradient(135deg, rgba(154, 205, 50, 0.8), rgba(102, 201, 9, 0.8));
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
+/* ========================================
+   TYPOGRAPHY STYLES
+   ======================================== */
+
+/* Main heading styles */
+h1 {
+    font-size: clamp(48px, 8vw, 84px); /* Responsive font size */
+    color: rgb(255, 255, 255);
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* General link styles */
+a {
+    color: white;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Navigation link styles */
 nav a {
     text-decoration: none;
     font-size: 17px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 10px 25px;
+    border-radius: 25px; /* Rounded navigation buttons */
+    margin: 0 5px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px; /* Spaced out letters */
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* Navigation hover effects */
+nav a:hover {
+    background-color: rgba(76, 175, 80, 0.8);
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 /* ========================================================== */
@@ -226,8 +290,187 @@ form h1 {
     box-sizing: border-box;
 }
 
-.contact-form .textarea {
-    min-height: 150px;
-    width: 100%;
+/* ========================================
+   RESPONSIVE DESIGN & MEDIA QUERIES
+   ======================================== */
+
+/* Tablet and smaller desktop screens */
+@media screen and (max-width: 1024px) {
+    .box {
+        width: 95%;
+        margin: 10px auto;
+    }
+    
+    nav a {
+        padding: 8px 15px;
+        font-size: 16px;
+        margin: 0 2px;
+    }
+    
+    main {
+        padding: 60px 20px;
+    }
+    
+    h1 {
+        font-size: clamp(42px, 7vw, 72px);
+    }
+}
+
+/* Mobile landscape and small tablets */
+@media screen and (max-width: 768px) {
+    .box {
+        width: 98%;
+        margin: 5px auto;
+        border-radius: 10px;
+    }
+    
+    header {
+        height: 80px;
+        padding: 15px 0;
+    }
+    
+    header img {
+        transform: scale(1);
+        max-width: 80%;
+        height: auto;
+    }
+    
+    nav {
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        padding: 6px 12px;
+        font-size: 14px;
+        margin: 2px;
+        border-radius: 15px;
+    }
+    
+    main {
+        padding: 40px 15px;
+        min-height: 300px;
+    }
+    
+    .welcome-text {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    main a {
+        padding: 15px 30px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    /* Form responsive adjustments */
+    form {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        transform: scale(1);
+    }
+    
+    .contact-form {
+        width: 90%;
+        max-width: 400px;
+        transform: scale(1);
+    }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin: 15px 0;
+    }
+    
+    .welcome-text {
+        font-size: 16px;
+    }
+    
+    nav a {
+        padding: 8px 10px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    main {
+        padding: 30px 10px;
+    }
+    
+    main a {
+        padding: 12px 25px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    /* Mobile form adjustments */
+    form {
+        width: 95%;
+        padding: 25px 15px;
+    }
+    
+    form h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .input-box input {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* High-resolution displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .box {
+        background-color: rgba(20, 20, 20, 0.1);
+    }
+    
+    form {
+        background-color: rgba(40, 40, 40, 0.95);
+        color: white;
+    }
+    
+    .input-box input {
+        background-color: rgba(60, 60, 60, 0.8);
+        color: white;
+        border-color: #555;
+    }
+    
+    .input-box input::placeholder {
+        color: #ccc;
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, footer, .btn {
+        display: none;
+    }
+    
+    .box {
+        box-shadow: none;
+        background: white;
+    }
+    
+    body {
+        background: white;
+    }
 }
 

@@ -1,61 +1,130 @@
-<!--Cook-UP SITE-->
+<!--
+====================================================================
+COOK-UP RECIPE PLATFORM - HOMEPAGE
+A modern recipe sharing platform where food lovers connect
+====================================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for proper display and SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cook-Up</title>
+    <meta name="description" content="Cook-Up - Share and discover amazing recipes with our cooking community">
+    <meta name="keywords" content="recipes, cooking, food, sharing, community">
+    <meta name="author" content="Cook-Up Team">
+    
+    <!-- Page title and styles -->
+    <title>Cook-Up - Recipe Sharing Platform</title>
     <link rel="stylesheet" href="stlye.css">
-<style> 
-    header img{ /*Resizes logo in place */
-        transform: scale(1.2);
-        transform-origin: top;
-    }
-    /*get stated button style*/
-    main a{
-        display: inline-block;
-        background-color: rgb(102, 201, 9);
-        padding: 15px 30px;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px black;
-        margin-top: 20px;
-        transition: all 0.3s ease;
-    }
-    /*can add hover effects*/
-
-</style>
-
+    
+    <!-- Custom styles for homepage -->
+    <style> 
+        /* Logo scaling animation */
+        header img { 
+            transform: scale(1.2);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Logo hover effect */
+        header img:hover {
+            transform: scale(1.25);
+        }
+        
+        /* Get Started button styling */
+        main a {
+            display: inline-block;
+            background: linear-gradient(135deg, #66c909, #4CAF50);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(102, 201, 9, 0.4);
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid transparent;
+        }
+        
+        /* Get Started button hover effects */
+        main a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 201, 9, 0.6);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Welcome text styling */
+        .welcome-text {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
-<!--MAIN BOX FOR HOME PAGE -->
+<!-- MAIN CONTAINER FOR HOMEPAGE -->
 <body>
-
     <div class="box">
+        <!-- HEADER SECTION: Logo and branding -->
         <header>
-            <img src="images/Cook-Up Logo.png" alt="Cook-Up Logo">
+            <img src="images/Cook-Up Logo.png" alt="Cook-Up Logo - Recipe Sharing Platform">
         </header>
 
-        <!--Top buttons -->
+        <!-- NAVIGATION BAR: Main site navigation -->
         <nav>
-            <a href="index.html">HOME</a>
+            <a href="index.html" class="nav-active">HOME</a>
             <a href="recipes.html">RECIPES</a>
             <a href="post-recipes.html">POST RECIPES</a>
-            <a href="favorite.html">FAVORITE</a>
             <a href="contact.html">CONTACT</a>
-            
-        </nav>  <!-- ADD FAVORITES IF WE HAVE TIME-->
+            <!-- Note: FAVORITES feature planned for future release -->
+        </nav>
 
+        <!-- MAIN CONTENT: Welcome message and call-to-action -->
         <main>
-        <h1>Cook-Up</h1>
-        <a href="account.html">GET STARTED!</a>
+            <p class="welcome-text">Welcome to the ultimate recipe sharing community!</p>
+            <h1>Cook-Up</h1>
+            <p class="welcome-text">Share your culinary creations and discover amazing recipes from food lovers around the world.</p>
+            <a href="account.html">GET STARTED!</a>
         </main>
 
-        <!--Thinking of adding reviews or moving pictures of food maybe-->
-        <footer></footer>
-
+        <!-- FOOTER: Future space for reviews, testimonials, or additional content -->
+        <footer>
+            <p>Join thousands of food enthusiasts sharing their favorite recipes!</p>
+        </footer>
     </div>
 
+    <!-- JavaScript for enhanced user experience -->
+    <script>
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-2px)';
+                }, 100);
+            });
+        });
+        
+        // Add entrance animation when page loads
+        window.addEventListener('load', function() {
+            document.querySelector('.box').style.opacity = '0';
+            document.querySelector('.box').style.transform = 'translateY(20px)';
+            document.querySelector('.box').style.transition = 'all 0.8s ease';
+            
+            setTimeout(() => {
+                document.querySelector('.box').style.opacity = '1';
+                document.querySelector('.box').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
