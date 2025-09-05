@@ -128,9 +128,12 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 
+**sharielachavez-dotcom**
 **Dikshantka**
+**ConnorSinger**
+- GitHub: [@sharielachavez-dotcom](https://github.com/sharielachavez-dotcom)
 - GitHub: [@Dikshantka](https://github.com/Dikshantka)
-
+- GitHub: [@ConnorSinger](https://github.com/ConnorSinger)
 ## 🙏 Acknowledgments
 
 - Thanks to the open-source community for inspiration
