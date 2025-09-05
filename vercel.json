@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "cook-up-recipe-platform",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

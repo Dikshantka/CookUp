@@ -18,6 +18,8 @@ Secure login interface with modern design and user experience
     <link rel="stylesheet" href="stlye.css"> 
     <!-- Boxicons for beautiful form icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Demo authentication for Vercel deployment -->
+    <script src="demo-auth.js"></script>
 </head>
 
 <!-- JavaScript for enhanced user experience -->
@@ -89,15 +91,23 @@ Secure login interface with modern design and user experience
     <!-- Login container with modern styling -->
     <div class="box login-container">
         <!-- LOGIN FORM: Handles user authentication -->
-        <form action="login_handler.php" method="POST" novalidate>
+        <form id="loginForm" novalidate>
             <!-- Form header -->
             <h1>Welcome Back!</h1>
             <p style="color: #666; margin-bottom: 25px; font-size: 16px;">Sign in to access your recipe collection</p>
+            
+            <!-- Demo credentials info -->
+            <div style="background: #e8f5e8; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 14px; color: #2e7d32;">
+                <strong>🎯 Demo Accounts:</strong><br>
+                👤 <strong>User:</strong> demo / demo123<br>
+                🔧 <strong>Admin:</strong> admin / admin123
+            </div>
             
             <!-- USERNAME INPUT: User identification -->
             <div class="input-box">
                 <input type="text" 
                        name="username" 
+                       id="username"
                        placeholder="Enter your username" 
                        required 
                        autocomplete="username"
@@ -110,6 +120,7 @@ Secure login interface with modern design and user experience
             <div class="input-box">
                 <input type="password" 
                        name="password" 
+                       id="password"
                        placeholder="Enter your password" 
                        required 
                        autocomplete="current-password"
@@ -118,7 +129,7 @@ Secure login interface with modern design and user experience
             </div>
             
             <!-- SUBMIT BUTTON: Login action -->
-            <button type="submit" class="btn">
+            <button type="submit" class="btn" id="loginBtn">
                 <i class="bx bx-log-in" style="margin-right: 8px;"></i>
                 Sign In
             </button>
@@ -133,19 +144,45 @@ Secure login interface with modern design and user experience
 
     <!-- Additional JavaScript for form enhancements -->
     <script>
-        // Add loading state to form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const submitBtn = document.querySelector('.btn');
+        // Handle form submission with demo authentication
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent traditional form submission
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const submitBtn = document.getElementById('loginBtn');
             const originalText = submitBtn.innerHTML;
             
+            // Show loading state
             submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin" style="margin-right: 8px;"></i>Signing In...';
             submitBtn.disabled = true;
             
-            // Re-enable button after 3 seconds if form doesn't submit
+            // Simulate network delay for realism
             setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 3000);
+                // Attempt demo login
+                const success = handleDemoLogin(username, password);
+                
+                if (!success) {
+                    // Reset button on failure
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            }, 800);
+        });
+        
+        // Add input focus effects
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.style.borderColor = '#4CAF50';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+                if (this.value === '') {
+                    this.style.borderColor = '#ddd';
+                }
+            });
         });
         
         // Add entrance animation
@@ -159,6 +196,42 @@ Secure login interface with modern design and user experience
                 form.style.opacity = '1';
                 form.style.transform = 'translateY(0)';
             }, 200);
+        });
+        
+        // Auto-fill demo credentials on demo button click
+        function fillDemoCredentials(type) {
+            if (type === 'user') {
+                document.getElementById('username').value = 'demo';
+                document.getElementById('password').value = 'demo123';
+            } else if (type === 'admin') {
+                document.getElementById('username').value = 'admin';
+                document.getElementById('password').value = 'admin123';
+            }
+            
+            // Add visual feedback
+            document.querySelectorAll('input').forEach(input => {
+                input.style.borderColor = '#4CAF50';
+                input.style.backgroundColor = '#f0f8f0';
+            });
+        }
+        
+        // Add quick demo buttons
+        window.addEventListener('load', function() {
+            const demoInfo = document.querySelector('[style*="background: #e8f5e8"]');
+            if (demoInfo) {
+                demoInfo.innerHTML += `
+                    <div style="margin-top: 10px;">
+                        <button type="button" onclick="fillDemoCredentials('user')" 
+                                style="background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer; font-size: 12px;">
+                            Fill User Demo
+                        </button>
+                        <button type="button" onclick="fillDemoCredentials('admin')" 
+                                style="background: #FF9800; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 12px;">
+                            Fill Admin Demo
+                        </button>
+                    </div>
+                `;
+            }
         });
     </script>
 </body>

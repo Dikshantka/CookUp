@@ -1,0 +1,18 @@
+{
+  "name": "cook-up-recipe-platform",
+  "version": "1.0.0",
+  "description": "Modern recipe sharing platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'Build complete - static files ready'",
+    "start": "serve .",
+    "preview": "serve ."
+  },
+  "keywords": ["recipes", "cooking", "food", "sharing", "community"],
+  "author": "Dikshantka",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
