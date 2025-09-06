@@ -1,1 +1,62 @@
-<html> <body>Welcome to 8my world</body> </html>
+
+<!-- Search Users Section -->
+    <main>
+        <br>
+        <br>
+        <h1>Search Users</h1>
+        <input type="text" id="search-input" placeholder="Search for recipes by name">
+        <button onclick="searchUsers()">Search For Users</button>
+        <div id="result-container"></div>
+    </main>
+
+
+<!--This is making the backround----->
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Background Image Code</title>
+</head>
+<body style="background-image: url('https://th.bing.com/th/id/R.582aeb6f2468c6d95bd2980d851ee930?rik=UJ7DtDG2WX%2bKIQ&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f1ZLpfHy.jpg&ehk=2O%2fMhpse%2foxlEYNYjOubsF9%2b6KDDDiHtZ6moSHe2Quw%3d&risl=&pid=ImgRaw&r=0'); background-size: cover; background-repeat: no-repeat;">
+    <!--<h1>Welcome to My Page</h1>-->
+</body>
+</html>
+
+
+        <!-- Script for searching users -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    function searchUsers() {
+        //alert("The search function begins")
+        let searchTerm = document.getElementById('search-input').value;
+
+        $.ajax({
+            url: 'searchboxUsers.php',
+            type: 'POST',
+            data: {username: searchTerm},
+            success: function(response) {
+                let users = JSON.parse(response);
+                let resultContainer = document.getElementById('result-container');
+                resultContainer.innerHTML = '';
+                if (users.length > 0) {
+                    users.forEach(user => {
+                        let userElement = document.createElement('div');
+                        userElement.textContent = `User ID: ${user.userID} - Username: ${user.username} `;
+                        let profileIcon = document.createElement('img');
+                        profileIcon.src = "https://tse4.mm.bing.net/th/id/OIP.p4fPOa-OIVEVnf8U9XyL2gHaFj?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3";
+                        profileIcon.alt = "Profile Icon";
+                        profileIcon.title = "Profile Icon";
+                        profileIcon.height = 20;
+
+                        userElement.appendChild(profileIcon);
+                        resultContainer.appendChild(userElement);
+                    });
+                } else {
+                    resultContainer.textContent = 'No recipes found with that name.';
+                }
+            },
+            error: function(response){alert("Error Couldn't Connect To The Database")}
+        });
+    }
+    </script>
+</body>
+</html>
