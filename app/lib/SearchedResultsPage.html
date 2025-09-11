@@ -1,0 +1,42 @@
+
+<html>
+<head>
+    <title>Background Image Code</title>
+</head>
+<body style="background-image: url('https://th.bing.com/th/id/R.15d336b30ccad577f0394654c4107e6e?rik=%2fHvMdfuxQ%2fsJZw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2flkRgwhY.jpg&ehk=zY35Syl4jKUrZP6SvFkUeKS6ehQt%2bG9OW8htcntAa5o%3d&risl=&pid=ImgRaw&r=0">
+    <!--<h1>Welcome to My Page</h1>-->
+</body>
+</html>
+
+<!--API Key from FoodData Central API Guide--->
+<!--bD1wcCoImfClVXnNb0gPb3tag51tA1z1irvhj1iJ-->
+<!--https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=mPe71FBWx9QcJhjgWhJU1wPdA1f4J7RWewZQbghG-->
+
+<!--curl -H 'X-Api-Key:mPe71FBWx9QcJhjgWhJU1wPdA1f4J7RWewZQbghG' 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1'-->
+
+
+
+<div class="test">
+    <url>
+        <li><a href="testing.html">Next File</a></li>
+    </url>
+</div>
+
+<script>
+    const apiKey = "mPe71FBWx9QcJhjgWhJU1wPdA1f4J7RWewZQbghG";
+    const url = `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1`;
+
+    fetch(url, {
+      headers: {
+        "X-Api-Key": apiKey
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Display the full data object in the <pre> tag
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      document.getElementById('output').textContent = "Error: " + error;
+    });
+  </script>

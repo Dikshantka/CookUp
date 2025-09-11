@@ -1,16 +1,37 @@
 
 <!-- Search Users Section -->
+ <!---Break this down, we created a search-input item that stores what the user wants to search
+ then we put it inside of a function that searches a database for said item and then goes to the page-->
     <main>
         <br>
         <br>
         <h1>Search Users</h1>
         <input type="text" id="search-input" placeholder="Search for recipes by name">
-        <button onclick="searchUsers()">Search For Users</button>
+        <button onclick="searchItemsMine()">Search For Recipes</button>
         <div id="result-container"></div>
     </main>
 
 
-<!--This is making the backround----->
+<!--This is making the backround--
+API Key from FoodData Central API Guide--->
+<!--bD1wcCoImfClVXnNb0gPb3tag51tA1z1irvhj1iJ
+HTTP Header
+Pass the API key into the X-Api-Key header:
+curl -H 'X-Api-Key: DEMO_KEY' 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1'
+GET Query Parameter
+In some cases, the API may support passing the API key into the api_key GET query string parameter:
+curl 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=YOUR_KEY_HERE'
+https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=YOUR_KEY_HERE
+-->
+
+<script>
+    fetch("https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1", {
+  method: "GET",
+  headers: {
+    "Authorization": "bD1wcCoImfClVXnNb0gPb3tag51tA1z1irvhj1iJ"
+  }
+});
+</script>
     <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +42,42 @@
 </body>
 </html>
 
+<div class="test">
+    <url>
+        <li><a href="SearchedResultsPage.html">Next File</a></li>
+    </url>
+</div>
+
+
+<script>
+    function searchItemsMine()
+    {
+        <li><a href="SearchedResultsPage.html">Next File</a></li>
+        //alert("Error Couldn't Connect To The Database")
+
+        //let searchTerm = document.getElementbyId("search-input").value;
+        //$.ajax({
+            //success: function(testing){
+                //{alert("Error Couldn't Connect To The Database")}
+            //}
+        //});
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---Testing Code From Another Project Not Needed, But Used For Practice----->
 
         <!-- Script for searching users -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,0 +1,53 @@
+<div class="test">
+    <url>
+        <li><a href="WelcomeHTMLbyConner.html">Home</a></li>
+    </url>
+</div>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alt Fuel Station Test</title>
+</head>
+<body>
+  <h1>Alt Fuel Stations</h1>
+  <pre id="output">Loading...</pre>
+
+<div class="test">
+    <url>
+        <li><a href="WelcomeHTMLbyConner.html">Home</a></li>
+    </url>
+</div>
+
+
+
+  <script>
+    const apiKey = "mPe71FBWx9QcJhjgWhJU1wPdA1f4J7RWewZQbghG";
+    const url = `https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1`;
+
+    fetch(url, {
+      headers: {
+        "X-Api-Key": apiKey
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Display the full data object in the <pre> tag
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      document.getElementById('output').textContent = "Error: " + error;
+    });
+
+    //Testing 
+
+    
+
+
+  </script>
+</body>
+</html>
