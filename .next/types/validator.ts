@@ -47,6 +47,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
+// Validate ../../app/account/page.tsx
+{
+  const handler = {} as typeof import("../../app/account/page.js")
+  handler satisfies AppPageConfig<"/account">
+}
+
+// Validate ../../app/admin/page.tsx
+{
+  const handler = {} as typeof import("../../app/admin/page.js")
+  handler satisfies AppPageConfig<"/admin">
+}
+
+// Validate ../../app/contact/page.tsx
+{
+  const handler = {} as typeof import("../../app/contact/page.js")
+  handler satisfies AppPageConfig<"/contact">
+}
+
 // Validate ../../app/notes/page.tsx
 {
   const handler = {} as typeof import("../../app/notes/page.js")
@@ -57,6 +75,36 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   const handler = {} as typeof import("../../app/page.js")
   handler satisfies AppPageConfig<"/">
+}
+
+// Validate ../../app/recipes/new/page.tsx
+{
+  const handler = {} as typeof import("../../app/recipes/new/page.js")
+  handler satisfies AppPageConfig<"/recipes/new">
+}
+
+// Validate ../../app/recipes/page.tsx
+{
+  const handler = {} as typeof import("../../app/recipes/page.js")
+  handler satisfies AppPageConfig<"/recipes">
+}
+
+// Validate ../../app/register/page.tsx
+{
+  const handler = {} as typeof import("../../app/register/page.js")
+  handler satisfies AppPageConfig<"/register">
+}
+
+// Validate ../../app/social/page.tsx
+{
+  const handler = {} as typeof import("../../app/social/page.js")
+  handler satisfies AppPageConfig<"/social">
+}
+
+// Validate ../../app/test-social/page.tsx
+{
+  const handler = {} as typeof import("../../app/test-social/page.js")
+  handler satisfies AppPageConfig<"/test-social">
 }
 
 // Validate ../../app/api/auth/callback/route.ts
@@ -81,6 +129,12 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   const handler = {} as typeof import("../../app/api/auth/profile/route.js")
   handler satisfies RouteHandlerConfig<"/api/auth/profile">
+}
+
+// Validate ../../app/api/auth/register/route.ts
+{
+  const handler = {} as typeof import("../../app/api/auth/register/route.js")
+  handler satisfies RouteHandlerConfig<"/api/auth/register">
 }
 
 // Validate ../../app/api/notes/route.ts

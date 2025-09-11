@@ -1,10 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/auth/callback/route": "app/api/auth/callback/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/api/auth/logout/route": "app/api/auth/logout/route.js",
-  "/api/auth/profile/route": "app/api/auth/profile/route.js",
-  "/api/notes/route": "app/api/notes/route.js",
-  "/notes/page": "app/notes/page.js",
-  "/page": "app/page.js"
+  "/account/page": "app/account/page.js",
+  "/page": "app/page.js",
+  "/social/page": "app/social/page.js"
 }

@@ -1,5 +1,1799 @@
-/* app/globals.css */
-:root { color-scheme: light dark; }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-main { padding: 24px; }
+/* ========================================
+   COOK-UP RECIPE PLATFORM - COMBINED STYLES
+   Modern, responsive design for recipe sharing
+   All styles unified in one file
+   ======================================== */
+
+/* Base HTML setup for full height layout */
+html {
+    height: 100%;
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
+}
+
+/* Global body styles with background image */
+body {
+    background-color: rgb(61, 61, 61); /* Fallback color */
+    background-image: url(/images/pexels-pixabay-326281.jpg); /* Main background */
+    background-size: cover; /* Cover entire viewport */
+    background-repeat: no-repeat; /* No image repetition */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Fixed background for parallax effect */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.6; /* Better readability */
+}
+
+/* ========================================
+   LAYOUT COMPONENTS
+   ======================================== */
+
+/* Main container for centered layout */
+.box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1024px; /* Responsive max width */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    backdrop-filter: blur(10px); /* Modern blur effect */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Clean edges */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Elevated appearance */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Header section with logo */
+header {
+    height: 118px;
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(102, 201, 9, 0.8));
+    position: relative;
+}
+
+/* Logo scaling animation */
+header img { 
+    transform: scale(1.2);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo hover effect */
+header img:hover {
+    transform: scale(1.25);
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    text-align: center;
+    padding: 14px 0;
+    backdrop-filter: blur(5px); /* Subtle blur */
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3); /* Green accent border */
+}
+
+/* Main content area */
+main {
+    min-height: 400px;
+    text-align: center;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer section for future reviews/content */
+footer {
+    background: linear-gradient(135deg, rgba(154, 205, 50, 0.8), rgba(102, 201, 9, 0.8));
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* ========================================
+   TYPOGRAPHY STYLES
+   ======================================== */
+
+/* Main heading styles */
+h1 {
+    font-size: clamp(48px, 8vw, 84px); /* Responsive font size */
+    color: rgb(255, 255, 255);
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* General link styles */
+a {
+    color: white;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Navigation link styles */
+nav a {
+    text-decoration: none;
+    font-size: 17px;
+    padding: 10px 25px;
+    border-radius: 25px; /* Rounded navigation buttons */
+    margin: 0 5px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px; /* Spaced out letters */
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* Navigation hover effects */
+nav a:hover {
+    background-color: rgba(76, 175, 80, 0.8);
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* Active navigation state */
+nav a.nav-active {
+    background-color: rgba(76, 175, 80, 0.9);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Welcome text styling */
+.welcome-text {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Get Started button styling */
+main a {
+    display: inline-block;
+    background: linear-gradient(135deg, #66c909, #4CAF50);
+    color: white;
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(102, 201, 9, 0.4);
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid transparent;
+}
+
+/* Get Started button hover effects */
+main a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 201, 9, 0.6);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+
+/* Login page specific styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    transform: scale(1.2);
+}
+
+form h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-box input:focus {
+    border-color: #4CAF50;
+}
+
+/* Styles for icons */
+.input-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #777;
+}
+
+/* Style for forms button */
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Register styling */
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Home button for login and register pages */
+.login-container::before {
+    content: "HOME";
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.login-container::before:hover {
+    background-color: hsl(123, 40%, 45%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact form styles */
+.contact-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    transform: scale(1.2);
+}
+
+.contact-form h3 {
+    font-size: 24px;
+    color: #090909;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.contact-form hr {
+    border: 1px solid #ddd;
+    margin-bottom: 25px;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   MESSAGE STYLES
+   ======================================== */
+
+.demo-message {
+    animation: slideIn 0.3s ease;
+}
+
+.demo-message.success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.demo-message.error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN & MEDIA QUERIES
+   ======================================== */
+
+/* Tablet and smaller desktop screens */
+@media screen and (max-width: 1024px) {
+    .box {
+        width: 95%;
+        margin: 10px auto;
+    }
+    
+    nav a {
+        padding: 8px 15px;
+        font-size: 16px;
+        margin: 0 2px;
+    }
+    
+    main {
+        padding: 60px 20px;
+    }
+    
+    h1 {
+        font-size: clamp(42px, 7vw, 72px);
+    }
+}
+
+/* Mobile landscape and small tablets */
+@media screen and (max-width: 768px) {
+    .box {
+        width: 98%;
+        margin: 5px auto;
+        border-radius: 10px;
+    }
+    
+    header {
+        height: 80px;
+        padding: 15px 0;
+    }
+    
+    header img {
+        transform: scale(1);
+        max-width: 80%;
+        height: auto;
+    }
+    
+    nav {
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        padding: 6px 12px;
+        font-size: 14px;
+        margin: 2px;
+        border-radius: 15px;
+    }
+    
+    main {
+        padding: 40px 15px;
+        min-height: 300px;
+    }
+    
+    .welcome-text {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    main a {
+        padding: 15px 30px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    /* Form responsive adjustments */
+    form {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        transform: scale(1);
+    }
+    
+    .contact-form {
+        width: 90%;
+        max-width: 400px;
+        transform: scale(1);
+    }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin: 15px 0;
+    }
+    
+    .welcome-text {
+        font-size: 16px;
+    }
+    
+    nav a {
+        padding: 8px 10px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    main {
+        padding: 30px 10px;
+    }
+    
+    main a {
+        padding: 12px 25px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    /* Mobile form adjustments */
+    form {
+        width: 95%;
+        padding: 25px 15px;
+    }
+    
+    form h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .input-box input {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* High-resolution displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .box {
+        background-color: rgba(20, 20, 20, 0.1);
+    }
+    
+    form {
+        background-color: rgba(40, 40, 40, 0.95);
+        color: white;
+    }
+    
+    .input-box input {
+        background-color: rgba(60, 60, 60, 0.8);
+        color: white;
+        border-color: #555;
+    }
+    
+    .input-box input::placeholder {
+        color: #ccc;
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, footer, .btn {
+        display: none;
+    }
+    
+    .box {
+        box-shadow: none;
+        background: white;
+    }
+    
+    body {
+        background: white;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #9E9E9E, #757575);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #757575, #616161);
+}
+
+/* ========================================
+   PARALLAX & ADVANCED ANIMATIONS
+   ======================================== */
+
+/* Parallax container */
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Parallax background layers */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.parallax-layer.layer-1 {
+    background: radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+.parallax-layer.layer-2 {
+    background: radial-gradient(circle at 80% 20%, rgba(102, 201, 9, 0.15) 0%, transparent 50%);
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+.parallax-layer.layer-3 {
+    background: radial-gradient(circle at 50% 50%, rgba(76, 175, 80, 0.08) 0%, transparent 50%);
+    animation: float 30s ease-in-out infinite;
+}
+
+/* Floating animations */
+.floating-animation {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.pulse-animation {
+    animation: pulse 4s ease-in-out infinite;
+}
+
+/* Enhanced glass effect */
+.glass-effect {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Page entrance animations */
+.fade-in {
+    animation: fadeInUp 1s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+.scale-in {
+    animation: scaleIn 0.8s ease-out;
+}
+
+.bounce-in {
+    animation: bounceIn 1s ease-out;
+}
+
+.fade-in-delayed {
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+/* Text effects */
+.glow-effect {
+    text-shadow: 
+        0 0 10px rgba(76, 175, 80, 0.5),
+        0 0 20px rgba(102, 201, 9, 0.3),
+        0 0 30px rgba(76, 175, 80, 0.2);
+}
+
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid #4CAF50;
+    white-space: nowrap;
+    animation: typing 2s steps(20) 1s both, blink 0.8s infinite;
+}
+
+.email-glow {
+    color: #66c909;
+    text-shadow: 0 0 8px rgba(102, 201, 9, 0.6);
+}
+
+/* Button enhancements */
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pulse-on-hover:hover {
+    animation: pulseGlow 0.6s ease-in-out;
+}
+
+/* Button ripple effect */
+.btn-ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.btn:hover .btn-ripple {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Input field enhancements */
+.input-glow:focus {
+    box-shadow: 
+        0 0 0 3px rgba(76, 175, 80, 0.1),
+        0 0 10px rgba(102, 201, 9, 0.2);
+    border-color: #4CAF50;
+}
+
+/* Avatar enhancements */
+.gradient-border {
+    background: linear-gradient(135deg, #4CAF50, #66c909);
+    position: relative;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: inherit;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Divider enhancement */
+.divider-text {
+    background: linear-gradient(135deg, #4CAF50, #66c909);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+/* Stagger animation for multiple elements */
+.stagger-animation > * {
+    animation: slideUp 0.6s ease-out;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+
+/* Logout button special effect */
+.logout-btn:hover {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    border-color: #f44336;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(1deg); }
+    50% { transform: translateY(-20px) rotate(0deg); }
+    75% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-100px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: #4CAF50; }
+    51%, 100% { border-color: transparent; }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(102, 201, 9, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+}
+
+/* ========================================
+   RESPONSIVE PARALLAX ADJUSTMENTS
+   ======================================== */
+
+@media screen and (max-width: 768px) {
+    .parallax-layer {
+        display: none; /* Disable parallax on mobile for performance */
+    }
+    
+    .floating-animation,
+    .pulse-animation {
+        animation: none; /* Reduce animations on mobile */
+    }
+    
+    .typing-effect {
+        border-right: none;
+        animation: none;
+        white-space: normal;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .parallax-layer,
+    .floating-animation,
+    .pulse-animation,
+    .typing-effect {
+        animation: none !important;
+    }
+    
+    .hover-lift:hover {
+        transform: none;
+    }
+}
+
+/* ========================================
+   APPLE-STYLE LOGIN PAGE
+   ======================================== */
+
+/* Main Apple-style container */
+.apple-page-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, 
+        rgba(245, 247, 250, 0.3) 0%, 
+        rgba(250, 252, 255, 0.4) 50%, 
+        rgba(240, 250, 245, 0.3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Subtle background layer */
+.apple-bg-layer {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(
+        circle at 30% 20%, 
+        rgba(76, 175, 80, 0.03) 0%, 
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 70% 80%, 
+        rgba(102, 201, 9, 0.04) 0%, 
+        transparent 50%
+    );
+    z-index: -1;
+}
+
+/* Content wrapper */
+.apple-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 24px;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Header with logo */
+.apple-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.apple-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(76, 175, 80, 0.1));
+}
+
+/* Login card */
+.apple-login-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: slideUpFade 0.8s ease-out;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* Apple title */
+.apple-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #2d5016;
+    text-align: center;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Apple subtitle */
+.apple-subtitle {
+    font-size: 17px;
+    color: #4a5d35;
+    text-align: center;
+    margin: 0 0 32px 0;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Form styling */
+.apple-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Input groups */
+.apple-input-group {
+    position: relative;
+    width: 100%;
+}
+
+/* Apple-style inputs */
+.apple-input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1.5px solid rgba(76, 175, 80, 0.2);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-sizing: border-box;
+    font-family: inherit;
+    color: #2d5016;
+    font-weight: 500;
+}
+
+.apple-input::placeholder {
+    color: #6b7d5a;
+    font-weight: 400;
+}
+
+.apple-input:focus {
+    border-color: #4CAF50;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 
+        0 0 0 4px rgba(76, 175, 80, 0.12),
+        0 2px 8px rgba(76, 175, 80, 0.08);
+}
+
+/* Sign in button */
+.apple-signin-btn {
+    width: 100%;
+    height: 52px;
+    background: linear-gradient(135deg, #4CAF50 0%, #66c909 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-top: 8px;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+    box-sizing: border-box;
+}
+
+.apple-signin-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.25);
+    background: linear-gradient(135deg, #45a049 0%, #5fb808 100%);
+}
+
+.apple-signin-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Divider */
+.apple-divider {
+    display: flex;
+    align-items: center;
+    margin: 28px 0 24px 0;
+    color: #86868b;
+    font-size: 15px;
+}
+
+.apple-divider::before,
+.apple-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.apple-divider span {
+    padding: 0 16px;
+    font-weight: 500;
+    color: #4a5d35;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+/* Signup section */
+.apple-signup-section {
+    text-align: center;
+}
+
+.apple-signup-text {
+    font-size: 13px;
+    color: #4a5d35;
+    margin: 0 0 8px 0;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.apple-signup-link {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.apple-signup-link:hover {
+    color: #45a049;
+    text-decoration: underline;
+}
+
+/* Footer */
+.apple-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #4a5d35;
+    font-size: 13px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================
+   APPLE-STYLE PROFILE PAGE
+   ======================================== */
+
+/* Profile card for logged in users */
+.apple-profile-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.02);
+    animation: slideUpFade 0.8s ease-out;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Logo section for profile */
+.apple-logo-section {
+    margin-bottom: 48px;
+}
+
+.apple-avatar-large {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #66c909);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2);
+}
+
+.apple-welcome-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #2d5016;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.apple-email-text {
+    font-size: 17px;
+    color: #4a5d35;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Actions grid */
+.apple-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.apple-action-card {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-align: center;
+    display: block;
+}
+
+.apple-action-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.apple-card-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.apple-action-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #2d5016;
+    margin: 0 0 4px 0;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.apple-action-card p {
+    font-size: 13px;
+    color: #4a5d35;
+    margin: 0;
+    line-height: 1.3;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Logout button */
+.apple-logout-btn {
+    width: 100%;
+    height: 48px;
+    background: rgba(255, 69, 58, 0.1);
+    color: #ff453a;
+    border: 1px solid rgba(255, 69, 58, 0.2);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: inherit;
+}
+
+.apple-logout-btn:hover {
+    background: rgba(255, 69, 58, 0.15);
+    border-color: rgba(255, 69, 58, 0.3);
+}
+
+/* Slide up fade animation */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   APPLE-STYLE RESPONSIVE DESIGN
+   ======================================== */
+
+@media screen and (max-width: 768px) {
+    .apple-content {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .apple-login-card,
+    .apple-profile-card {
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+    
+    .apple-title,
+    .apple-welcome-text {
+        font-size: 28px;
+    }
+    
+    .apple-actions-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .apple-input,
+    .apple-signin-btn {
+        height: 52px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+}
+
+/* Base HTML setup for full height layout */
+html {
+    height: 100%;
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
+}
+
+/* Global body styles with background image */
+body {
+    background-color: rgb(61, 61, 61); /* Fallback color */
+    background-image: url(/images/pexels-pixabay-326281.jpg); /* Main background */
+    background-size: cover; /* Cover entire viewport */
+    background-repeat: no-repeat; /* No image repetition */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Fixed background for parallax effect */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.6; /* Better readability */
+}
+
+/* ========================================
+   LAYOUT COMPONENTS
+   ======================================== */
+
+/* Main container for centered layout */
+.box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1024px; /* Responsive max width */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    backdrop-filter: blur(10px); /* Modern blur effect */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Clean edges */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Elevated appearance */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Header section with logo */
+header {
+    height: 118px;
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(102, 201, 9, 0.8));
+    position: relative;
+}
+
+/* Logo scaling animation */
+header img { 
+    transform: scale(1.2);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo hover effect */
+header img:hover {
+    transform: scale(1.25);
+}
+
+/* Navigation bar styles */
+nav {
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    text-align: center;
+    padding: 14px 0;
+    backdrop-filter: blur(5px); /* Subtle blur */
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3); /* Green accent border */
+}
+
+/* Main content area */
+main {
+    min-height: 400px;
+    text-align: center;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer section for future reviews/content */
+footer {
+    background: linear-gradient(135deg, rgba(154, 205, 50, 0.8), rgba(102, 201, 9, 0.8));
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* ========================================
+   TYPOGRAPHY STYLES
+   ======================================== */
+
+/* Main heading styles */
+h1 {
+    font-size: clamp(48px, 8vw, 84px); /* Responsive font size */
+    color: rgb(255, 255, 255);
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for readability */
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* General link styles */
+a {
+    color: white;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Navigation link styles */
+nav a {
+    text-decoration: none;
+    font-size: 17px;
+    padding: 10px 25px;
+    border-radius: 25px; /* Rounded navigation buttons */
+    margin: 0 5px;
+    display: inline-block;
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px; /* Spaced out letters */
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* Navigation hover effects */
+nav a:hover {
+    background-color: rgba(76, 175, 80, 0.8);
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* ========================================================== */
+/*Login page specific styles*/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    transform: scale(1.2);
+}
+
+form h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-box input:focus {
+    border-color: #4CAF50;
+}
+
+/*styles for icons*/
+.input-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #777;
+}
+
+/*syle for froms button*/
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+/*Registr styling*/
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================== */
+/* Home button for login and register pages*/
+.login-container::before {
+    content: "HOME";
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.login-container::before:hover {
+    background-color: hsl(123, 40%, 45%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/*pseudo element clickable */
+.login-container {
+    position: relative;
+}
+
+.login-container::before {
+    cursor: pointer;
+}
+
+/*========================================================== */
+/*All contact form styles*/
+
+/* Making Click with some JavaScript */
+.login-container::before {
+    pointer-events: auto;
+}
+
+.contact-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    transform: scale(1.2);
+}
+
+.contact-form h3 {
+    font-size: 24px;
+    color: #090909;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.contact-form hr {
+    border: 1px solid #ddd;
+    margin-bottom: 25px;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN & MEDIA QUERIES
+   ======================================== */
+
+/* Tablet and smaller desktop screens */
+@media screen and (max-width: 1024px) {
+    .box {
+        width: 95%;
+        margin: 10px auto;
+    }
+    
+    nav a {
+        padding: 8px 15px;
+        font-size: 16px;
+        margin: 0 2px;
+    }
+    
+    main {
+        padding: 60px 20px;
+    }
+    
+    h1 {
+        font-size: clamp(42px, 7vw, 72px);
+    }
+}
+
+/* Mobile landscape and small tablets */
+@media screen and (max-width: 768px) {
+    .box {
+        width: 98%;
+        margin: 5px auto;
+        border-radius: 10px;
+    }
+    
+    header {
+        height: 80px;
+        padding: 15px 0;
+    }
+    
+    header img {
+        transform: scale(1);
+        max-width: 80%;
+        height: auto;
+    }
+    
+    nav {
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        padding: 6px 12px;
+        font-size: 14px;
+        margin: 2px;
+        border-radius: 15px;
+    }
+    
+    main {
+        padding: 40px 15px;
+        min-height: 300px;
+    }
+    
+    .welcome-text {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    main a {
+        padding: 15px 30px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    /* Form responsive adjustments */
+    form {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        transform: scale(1);
+    }
+    
+    .contact-form {
+        width: 90%;
+        max-width: 400px;
+        transform: scale(1);
+    }
+}
+
+/* Mobile portrait */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: clamp(36px, 10vw, 48px);
+        margin: 15px 0;
+    }
+    
+    .welcome-text {
+        font-size: 16px;
+    }
+    
+    nav a {
+        padding: 8px 10px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    main {
+        padding: 30px 10px;
+    }
+    
+    main a {
+        padding: 12px 25px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    /* Mobile form adjustments */
+    form {
+        width: 95%;
+        padding: 25px 15px;
+    }
+    
+    form h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .input-box input {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* High-resolution displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .box {
+        background-color: rgba(20, 20, 20, 0.1);
+    }
+    
+    form {
+        background-color: rgba(40, 40, 40, 0.95);
+        color: white;
+    }
+    
+    .input-box input {
+        background-color: rgba(60, 60, 60, 0.8);
+        color: white;
+        border-color: #555;
+    }
+    
+    .input-box input::placeholder {
+        color: #ccc;
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, footer, .btn {
+        display: none;
+    }
+    
+    .box {
+        box-shadow: none;
+        background: white;
+    }
+    
+    body {
+        background: white;
+    }
+}
